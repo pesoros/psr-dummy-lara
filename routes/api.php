@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\HomeController;
+use App\Http\Controllers\API\NopolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,12 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('login', 'login');
 });
 
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::controller(HomeController::class)->group(function(){
         Route::get('access', 'access');
+    });
+    Route::controller(NopolController::class)->group(function(){
+        Route::get('nopol/search', 'getNopol');
     });
 });
